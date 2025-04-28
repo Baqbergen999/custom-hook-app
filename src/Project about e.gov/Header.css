@@ -1,0 +1,47 @@
+header{
+    background-image: url('https://r4.wallpaperflare.com/wallpaper/375/751/675/mountains-landscape-winter-snow-wallpaper-6900386df1aaedabd61708bf90e1169d.jpg');
+    background-size: cover;
+    height: 50vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 176.2vh;
+    box-shadow: inset 0px 0px 250px 20px black, 0px 0px 20px black;
+}
+.nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+    background-color: rgb(35, 35, 35);
+    box-shadow: 0px 0px 20px black;
+}
+.logo h1 {
+    color: rgb(174, 174, 174);
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+.logo h1 span {
+    color: rgb(255, 255, 255);
+}
+.links {
+    display: flex;
+    gap: 20px;
+}
+.links a{
+    text-decoration: none;
+    color: white;
+    transition: 0.7s all;
+}
+.links a:hover  {
+    text-decoration: underline;
+}
+.content h1 {
+    font-size: 70px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    text-align: center;
+    margin-top: 100px;
+}

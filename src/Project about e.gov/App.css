@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f8;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .main-title {
+    text-align: center;
+    color: #256029;
+    margin-bottom: 40px;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 500px;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 160px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+  
+  .icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .service-page {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .iin-input {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #256029;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1a4720;
+  }
+  
+  .person-info {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
