@@ -35,7 +35,7 @@ const GeminiSearch = () => {
         }
       );
 
-      const generatedText = res?.data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      const generatedText = res.data.candidates[0].content.parts[0].text;
 
       if (generatedText) {
         setResponse(generatedText);
@@ -51,31 +51,75 @@ const GeminiSearch = () => {
   };
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h2>Gemini AI Поиск</h2>
+    <div
+      style={{
+        maxWidth: '600px',
+        margin: '50px auto',
+        padding: '2rem',
+        backgroundColor: '#f9fafb',
+        borderRadius: '16px',
+        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+        fontFamily: 'Inter, sans-serif',
+      }}
+    >
+      <h2 style={{ fontSize: '1.75rem', fontWeight: '600', marginBottom: '1rem' }}>
+        Gemini Search
+      </h2>
 
-      <input
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-        placeholder="Введите запрос"
-        style={{ width: '300px', padding: '8px' }}
-      />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          placeholder="Введите запрос..."
+          style={{
+            flexGrow: 1,
+            padding: '10px 14px',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            fontSize: '1rem',
+            outline: 'none',
+            transition: 'border 0.2s ease',
+          }}
+        />
+        <button
+          onClick={handleSearch}
+          disabled={loading}
+          style={{
+            padding: '10px 18px',
+            borderRadius: '8px',
+            border: 'none',
+            backgroundColor: '#4f46e5',
+            color: 'white',
+            fontWeight: '500',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            transition: 'background 0.2s ease',
+          }}
+        >
+          {loading ? 'Загрузка...' : 'Поиск'}
+        </button>
+      </div>
 
-      <button
-        onClick={handleSearch}
-        disabled={loading}
-        style={{ marginLeft: '10px', padding: '8px 12px' }}
-      >
-        {loading ? 'Загрузка...' : 'Поиск'}
-      </button>
-
-      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+      {error && (
+        <p style={{ color: 'red', marginTop: '1rem', fontSize: '0.95rem' }}>{error}</p>
+      )}
 
       {response && (
-        <div style={{ marginTop: '1.5rem', whiteSpace: 'pre-wrap' }}>
-          <h3>Ответ:</h3>
+        <div
+          style={{
+            marginTop: '1.5rem',
+            backgroundColor: '#ffffff',
+            padding: '1rem',
+            borderRadius: '12px',
+            border: '1px solid #e5e7eb',
+            whiteSpace: 'pre-wrap',
+            lineHeight: '1.6',
+            fontSize: '1rem',
+            color: '#111827',
+          }}
+        >
+          <h3 style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Ответ:</h3>
           <p>{response}</p>
         </div>
       )}
