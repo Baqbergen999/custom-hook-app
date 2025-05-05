@@ -9,14 +9,50 @@ export default function Magnum() {
             <div className="text-4xl font-extrabold text-pink-600">
               ≡ magnum
             </div>
-            <a href="#" className="text-pink-500 text-sm font-semibold pl-20 pt-2 font-bold">
-              Magnum Corp. <span className="inline-block ml-1"><img className="w-3" src="https://cdn-icons-png.flaticon.com/512/10009/10009149.png" alt="" /></span>
+            <a
+              href="#"
+              className="text-pink-500 text-sm font-semibold pl-20 pt-2 font-bold"
+            >
+              Magnum Corp.{" "}
+              <span className="inline-block ml-1">
+                <img
+                  className="w-3"
+                  src="https://cdn-icons-png.flaticon.com/512/10009/10009149.png"
+                  alt=""
+                />
+              </span>
             </a>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="flex items-center bg-gray-100 rounded-[20px] px-4 py-5 w-[500px]">
-              <span className="text-gray-500 mr-2"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="#ababab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span>
+              <span className="text-gray-500 mr-2">
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#ffffff"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                      stroke="#ababab"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </span>
               <input
                 type="text"
                 placeholder="Поиск"
