@@ -1,7 +1,9 @@
+import bg from './header-bg.png';
+
 export default function Home() {
   return (
     <div>
-      <header className="relative z-[1] w-full h-screen bg-[#333] text-white bg-[url('./header-photo-GPT.png')] bg-cover bg-center">
+      <header className="relative w-full h-screen bg-[#333] text-white bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
         <nav className="flex justify-between items-center p-[10px_30px] text-white">
           <div className="flex items-center gap-[10px]">
             <img
@@ -65,11 +67,11 @@ export default function Home() {
             </li>
           </ul>
         </nav>
-        <h1 className="text-[220px] text-white font-['Anton'] font-medium text-center mt-[19vh] mb-0 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] z-[10]">
-          <span className="relative z-[-2]">GYM</span> CENTRE
+        <h1 className="text-[220px] text-white font-['Anton'] font-medium text-center mt-[19vh] mb-0 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]">
+          <span className="relative z-[-10]" >GYM</span> <span className='z-[100]'>CENTRE</span>
         </h1>
         <img
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 z-[-1] bg-cover bg-center mb-[20%]"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 z-[1] bg-cover bg-center mb-[20%]"
           src="https://pngimg.com/d/dumbbell_PNG16378.png"
           alt=""
         />
