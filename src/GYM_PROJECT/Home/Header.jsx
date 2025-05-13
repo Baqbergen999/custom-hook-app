@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
+import dumbbells from './pngimg.com - dumbbell_PNG16378.png'
 
 export default function Header() {
   return (
@@ -20,7 +21,7 @@ export default function Header() {
       <h1 className="header-title">
           <span>GYM</span> CENTRE
       </h1>
-      <img className='dumbbells' src="https://pngimg.com/d/dumbbell_PNG16378.png" alt="" />
+      <img className='dumbbells' src={dumbbells} alt="" />
       <Link className="shop-btn" to={'/shop'}>EXPLORE OUR SHOP</Link>
     </header>
 

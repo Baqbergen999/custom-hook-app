@@ -13,7 +13,6 @@ const GeminiChat = () => {
 
     try {
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAo_H2fkN00fjm-sQkU2t2EdNDeSlx9Zeg`,
         {
           method: "POST",
           headers: {
@@ -36,7 +35,7 @@ const GeminiChat = () => {
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "❌ Error contacting Gemini API." },
+        { sender: "bot", text: "Error contacting Gemini API." },
       ]);
     }
   };

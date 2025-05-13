@@ -528,11 +528,11 @@ export default function ProductGrid() {
             </select>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid bg-green-10 grid-cols-2 md:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white p-4 rounded-xl shadow-md"
+                className="bg-white p-4 shadow-md"
               >
                 <img
                   src={product.image}

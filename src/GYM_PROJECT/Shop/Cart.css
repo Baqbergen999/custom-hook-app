@@ -10,6 +10,7 @@
  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
  background: #e62222;
  scale: 0.8;
+ border-radius: 0px;
 }
 
 .noselect, .noselect span {
@@ -31,6 +32,8 @@
  display: flex;
  align-items: center;
  justify-content: center;
+ border-radius: 0px;
+ background-color: #ffffff00;
 }
 
 .noselect svg {
@@ -59,6 +62,8 @@
 .noselect:active .icon svg {
  transform: scale(0.8);
 }
+
+
 
 
 

@@ -37,7 +37,7 @@ export default function GenexHero() {
           <div
             className={`${
               isFixed
-                ? "fixed top-0 left-0 right-0 z-50 px-8 lg:px-20 py-4 shadow-[0px_10px_30px_black] backdrop-blur-md bg-[rgba(20,30,42,0.75)] rounded-b-[5px]"
+                ? "fixed top-0 left-0 right-0 z-50 px-8 lg:px-20 py-4 shadow-[0px_10px_30px_black] backdrop-blur-md bg-[rgba(0,0,10,0.75)] rounded-b-[5px]"
                 : ""
             } flex justify-between items-center w-full mb-12 font-[Anton] transition-all duration-300`}
           >
