@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-black py-[70px] px-[80px] font-['Work_Sans'] not-italic font-normal mt-[90vh]">
+    <footer className="bg-black py-[70px] px-[80px] font-['Work_Sans'] not-italic font-normal mt-[90vh] md:items-center">
       <div className="flex justify-between flex-wrap">
         <div className="flex-1 min-w-[180px] mr-[40px]">
           <h4 className="text-white text-[16px] font-bold mb-[25px] relative after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:w-[40px] after:h-[2px] after:bg-[#e91e63]">
@@ -151,15 +151,15 @@ export default function Footer() {
                 viewBox="0 -2 20 20"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
                 fill="#ffffff"
                 stroke="#ffffff"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
                   id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
                   {" "}
@@ -168,9 +168,9 @@ export default function Footer() {
                   <g
                     id="Page-1"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   >
                     {" "}
                     <g

@@ -436,8 +436,8 @@ export default function ProductGrid() {
   };
 
   return (
-    <main>
-      <section className="flex items-center justify-center gap-10 border-b-2 border-gray-300 ml-4 mr-4 pt-20 mb-20">
+    <main className="bg-white">
+      <section className="flex items-center bg-white text-black justify-center gap-10 border-b-2 border-gray-300 ml-4 mr-4 pt-20 mb-20">
         <div className="w-[30%] p-10">
           <h1 className="text-[35px] font-bold mb-4">Quality & Durability</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing. Elit this product</p>
@@ -486,9 +486,9 @@ export default function ProductGrid() {
                   >
                     <path
                       d="M15 7v3a5.006 5.006 0 0 1-5 5H6a5.006 5.006 0 0 1-5-5V7m7 9v3m-3 0h6M7 1h2a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3Z"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
                       stroke="currentColor"
                     ></path>
                   </svg>
@@ -507,9 +507,9 @@ export default function ProductGrid() {
                 >
                   <path
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    stroke-width="2"
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
+                    strokeWidth="2"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
                     stroke="currentColor"
                   ></path>
                 </svg>
@@ -688,9 +688,9 @@ export default function ProductGrid() {
               />
               <button
                 type="submit"
-                class="relative bottom-0 rounded-xl text-[#FFF] font-black bg-[#000] uppercase px-8 py-4 z-10 overflow-hidden ease-in-out duration-700 hover:text-[#000] hover:bg-[#FFF] active:scale-95 active:duration-0 focus:bg-[#FFF] focus:text-[#000] before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#FFF] before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 border-white border"
+                className="relative bottom-0 rounded-xl text-[#FFF] font-black bg-[#000] uppercase px-8 py-4 z-10 overflow-hidden ease-in-out duration-700 hover:text-[#000] hover:bg-[#FFF] active:scale-95 active:duration-0 focus:bg-[#FFF] focus:text-[#000] before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#FFF] before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 border-white border"
               >
-                <span class="eaes-in-out duration-300">Send Message</span>
+                <span className="eaes-in-out duration-300">Send Message</span>
               </button>
             </form>
           </div>

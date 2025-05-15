@@ -18,25 +18,9 @@ const Cart = () => {
       alert("Fill in all fields!");
     } else {
       alert("Payment successful!");
-      setPay(false);  
+      setPay(false);
     }
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (cartRef.current && !cartRef.current.contains(event.target)) {
-        setShowCart(false);
-      }
-    };
-
-    if (showCart) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showCart, setShowCart]);
 
   if (!showCart) return null;
 
@@ -167,9 +151,36 @@ const Cart = () => {
               value="Checkout"
               className="mt-5 py-5 rounded-[25px] text-white font-medium text-lg cursor-pointer border-2 border-transparent bg-[#d17842] transition-all hover:bg-transparent hover:text-[#d17842] hover:border-[#d17842] active:scale-95"
             />
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 p-2 hover:bg-[#d17842] rounded-full transition-all"
+              onClick={() => setPay(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#fff"
+              >
+                <path d="M12 10.586l-4.293-4.293-1.414 1.414L10.586 12l-4.293 4.293 1.414 1.414L12 13.414l4.293 4.293 1.414-1.414L13.414 12l4.293-4.293-1.414-1.414z"></path>
+              </svg>
+            </button>
           </div>
         </form>
       )}
+      <button
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 p-2 hover:bg-gray-200 rounded-full transition-all"
+        onClick={() => setShowCart(false)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12 10.586l-4.293-4.293-1.414 1.414L10.586 12l-4.293 4.293 1.414 1.414L12 13.414l4.293 4.293 1.414-1.414L13.414 12l4.293-4.293-1.414-1.414z"></path>
+        </svg>
+      </button>
     </div>
   );
 };

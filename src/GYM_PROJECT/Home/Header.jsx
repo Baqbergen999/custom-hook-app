@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
 import dumbbells from './pngimg.com - dumbbell_PNG16378.png'
+import { useTheme } from "./ThemeContext";
 
 export default function Header() {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className="header">
       <nav className="navbar">
@@ -12,9 +14,15 @@ export default function Header() {
           </div>
           <ul className="nav-links">
               <li><Link to={'/shop'}>Shop</Link></li>
-              <li><a href="#about">About</a></li>
-              <li><Link to={'/ai-trainer'}>Advices of AI Trainer</Link></li>
+              <li><Link to={'/'}>Log out</Link></li>
+              <li><Link to={'/ai-trainer'}>Contact with Trainer</Link></li>
               <li><a href="https://wa.me/77052652485">Contact</a></li>
+              <li>
+                <label className="switch">
+                  <input onClick={toggleTheme} type="checkbox"/>
+                  <span className="slider"></span>
+                </label>
+              </li>
               <li><img width={"30px"} src="https://img.icons8.com/ios11/512/FFFFFF/menu.png" alt="" /></li>
           </ul>
       </nav>

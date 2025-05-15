@@ -1,116 +1,147 @@
 import { useState } from "react";
+import axios from "axios";
 
 const GeminiChat = () => {
-  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = { sender: "user", text: input };
+    const userMessage = { role: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
+    setLoading(true);
+    setError(null);
     setInput("");
 
+    const trainerPrompt = `
+Ты играешь роль жесткого, но доброжелательного фитнес-тренера. Отвечай мотивационно, немного грубо, но с поддержкой, как настоящий тренер. Используй эмодзи 💪🔥😤. Пример:
+Пользователь: "Мне лень тренироваться"
+Тренер: "Лень — твой враг! 😤 Поднимайся с дивана и делай 20 приседаний прямо сейчас! Хочешь результат — действуй! 💥💪"
+Пользователь: "${input}"
+`;
+
     try {
-      const res = await fetch(
+      const res = await axios.post(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAo_H2fkN00fjm-sQkU2t2EdNDeSlx9Zeg`,
         {
-          method: "POST",
+          contents: [
+            {
+              parts: [{ text: trainerPrompt }],
+            },
+          ],
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: input }] }],
-          }),
         }
       );
-      const data = await res.json();
-      const botText =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+
+      const botText = res.data.candidates[0].content.parts[0].text;
 
       const botMessage = {
-        sender: "bot",
-        text: botText,
+        role: "bot",
+        text: botText || "Ответ пустой или неожиданной структуры.",
       };
+
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: "Error contacting Gemini API." },
-      ]);
+      console.error(err);
+      setError("Ошибка при запросе к Gemini API");
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const formatText = (text) => {
-
-    if (text.includes("```")) {
-      const parts = text.split("```");
-      return parts.map((part, i) => {
-        if (i % 2 === 1) {
-          return (
-            <pre className="bg-gray-900 text-green-400 p-3 rounded my-2 overflow-auto">
-              <code>{part}</code>
-            </pre>
-          );
-        } else {
-          return <span dangerouslySetInnerHTML={{ __html: boldText(part) }} />;
-        }
-      });
-    } else {
-      return <span dangerouslySetInnerHTML={{ __html: boldText(text) }} />;
-    }
-  };
-
-  const boldText = (text) => {
-    let result = text;
-    if (text.includes("**")) {
-      result = text.split("**").map((item, index) => 
-        index % 2 !== 0 ? `<b>${item}</b>` : item
-      ).join("");
-    }
-    return result;
   };
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] flex flex-col items-center p-6">
-      <h1 className="text-3xl font-bold mb-6">Gemini Chat</h1>
-      <div className="w-full max-w-2xl bg-white rounded-xl p-6 shadow-md space-y-4">
-        {messages.map((msg, index) => (
+    <div
+      style={{
+        maxWidth: "700px",
+        margin: "50px auto",
+        padding: "2rem",
+        backgroundColor: "#f3f4f6",
+        borderRadius: "16px",
+        boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+        fontFamily: "Inter, sans-serif",
+      }}
+    >
+      <h2 style={{ fontSize: "1.75rem", fontWeight: "600", marginBottom: "1.5rem" }}>
+        Trainer Bot
+      </h2>
+
+      <div style={{ maxHeight: "400px", overflowY: "auto", marginBottom: "1rem", padding: "1rem", backgroundColor: "#fff", borderRadius: "12px", border: "1px solid #e5e7eb" }}>
+        {messages.map((msg, idx) => (
           <div
-            key={index}
-            className={`flex gap-4 ${
-              msg.sender === "bot" ? "flex-row" : "flex-row-reverse"
-            }`}
+            key={idx}
+            style={{
+              textAlign: msg.role === "user" ? "right" : "left",
+              marginBottom: "1rem",
+            }}
           >
-            {msg.sender === "bot" ? (
-              <img src='' alt="Gemini" className="w-10 h-10 rounded-full" />
-            ) : (
-              <div className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white font-bold">
-                U
-              </div>
-            )}
             <div
-              className={`p-4 rounded-xl max-w-[80%] whitespace-pre-wrap text-sm ${
-                msg.sender === "bot" ? "bg-gray-100" : "bg-blue-100"
-              }`}
+              style={{
+                display: "inline-block",
+                backgroundColor: msg.role === "user" ? "#4f46e5" : "#e0e7ff",
+                color: msg.role === "user" ? "white" : "#1e1b4b",
+                padding: "10px 14px",
+                borderRadius: "12px",
+                maxWidth: "80%",
+                wordWrap: "break-word",
+              }}
             >
-              {formatText(msg.text)}
+              {msg.text}
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-6 w-full max-w-2xl flex gap-4">
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          className="flex-1 p-4 rounded-full border border-gray-300 shadow-sm focus:outline-none"
-          placeholder="Ask Gemini something..."
-        />
+
+      {error && <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>}
+
+      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        <div style={{ position: "relative", flexGrow: 1 }}>
+          <input
+            type="text"
+            value={input}
+            onChange={handleInputChange}
+            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            placeholder="Напиши тренеру..."
+            className="uiverse-input"
+            style={{
+              width: "100%",
+              padding: "12px 16px",
+              borderRadius: "12px",
+              border: "1px solid #d1d5db",
+              fontSize: "1rem",
+              outline: "none",
+              transition: "0.2s ease",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+            }}
+          />
+        </div>
+
         <button
           onClick={handleSend}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full shadow-md"
+          disabled={loading}
+          style={{
+            padding: "12px 18px",
+            borderRadius: "12px",
+            border: "none",
+            backgroundColor: "#4f46e5",
+            color: "white",
+            fontWeight: "500",
+            cursor: loading ? "not-allowed" : "pointer",
+            boxShadow: "0 4px 14px rgba(79, 70, 229, 0.4)",
+            transition: "0.3s ease",
+          }}
         >
-          Send
+          {loading ? "Отправка..." : "Отправить"}
         </button>
       </div>
     </div>

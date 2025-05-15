@@ -2,13 +2,14 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 // import "./Home.css";
+import { ThemeProvider } from "./ThemeContext";
 
 export default function Home() {
   return (
-    <div className="body">
+    <ThemeProvider>
       <Header/>
       <Main></Main>
       <Footer></Footer>
-    </div>
+    </ThemeProvider>
   );
 }
